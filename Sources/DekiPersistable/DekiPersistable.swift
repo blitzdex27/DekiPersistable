@@ -9,12 +9,11 @@ public protocol DekiPersistable: Codable {
 }
 
 public extension DekiPersistable {
-    func save(fileName: String? = nil) async throws -> Bool {
+    func save(fileName: String? = nil) async throws{
         let fileName = fileName ?? String(describing: type(of: self))
         let url = URL.urlOnDocumentsDirectory(fileName: fileName)
         let encoded = try JSONEncoder().encode(self)
         try encoded.write(to: url)
-        return true
     }
     
     static func load(fileName: String? = nil) async throws -> Self {
