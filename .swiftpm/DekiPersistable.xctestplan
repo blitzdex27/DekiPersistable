@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "23FA2B19-FF9A-49A3-A4DB-203A3100945D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "DekiPersistableTests",
+        "name" : "DekiPersistableTests"
+      }
+    }
+  ],
+  "version" : 1
+}
