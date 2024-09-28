@@ -4,12 +4,12 @@
 import Foundation
 
 public protocol DekiPersistable: Codable {
-    func save(fileName: String?) async throws -> Bool
+    func save(fileName: String?) async throws
     static func load(fileName: String?) async throws -> Self
 }
 
 public extension DekiPersistable {
-    func save(fileName: String? = nil) async throws{
+    func save(fileName: String? = nil) async throws {
         let fileName = fileName ?? String(describing: type(of: self))
         let url = URL.urlOnDocumentsDirectory(fileName: fileName)
         let encoded = try JSONEncoder().encode(self)
