@@ -23,6 +23,12 @@ public extension DekiPersistable {
         let decoded = try JSONDecoder().decode(Self.self, from: data)
         return decoded
     }
+    
+    static func delete(fileName: String? = nil) async throws {
+        let fileName = fileName ?? String(describing: Self.self)
+        let url = URL.urlOnDocumentsDirectory(fileName: fileName)
+        try FileManager.default.removeItem(at: url)
+    }
 }
 
 extension URL {
