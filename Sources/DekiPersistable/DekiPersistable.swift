@@ -6,6 +6,7 @@ import Foundation
 public protocol DekiPersistable: Codable {
     func save(fileName: String?) async throws
     static func load(fileName: String?) async throws -> Self
+    static func delete(fileName: String?) async throws
 }
 
 public extension DekiPersistable {
