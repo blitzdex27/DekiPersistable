@@ -10,14 +10,14 @@ public protocol DekiPersistable: Codable {
 }
 
 public extension DekiPersistable {
-    func save(fileName: String? = nil) async throws {
+    func save(fileName: String? = nil) throws {
         let fileName = fileName ?? String(describing: type(of: self))
         let url = URL.urlOnDocumentsDirectory(fileName: fileName)
         let encoded = try JSONEncoder().encode(self)
         try encoded.write(to: url)
     }
     
-    static func load(fileName: String? = nil) async throws -> Self {
+    static func load(fileName: String? = nil) throws -> Self {
         let fileName = fileName ?? String(describing: Self.self)
         let url = URL.urlOnDocumentsDirectory(fileName: fileName)
         let data = try Data(contentsOf: url)
@@ -25,7 +25,7 @@ public extension DekiPersistable {
         return decoded
     }
     
-    static func delete(fileName: String? = nil) async throws {
+    static func delete(fileName: String? = nil) throws {
         let fileName = fileName ?? String(describing: Self.self)
         let url = URL.urlOnDocumentsDirectory(fileName: fileName)
         try FileManager.default.removeItem(at: url)
